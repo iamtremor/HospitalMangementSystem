@@ -1,0 +1,27 @@
+﻿@page
+@model Hospital.Views.Home.RegistrationSuccessViewModel
+@{
+    ViewBag.Title = "Registration Success";
+}
+
+<h2>Registration Successful!</h2>
+<p>Thank you for registering, @ViewBag.FullName!</p>
+<p>Your Date of Birth: @ViewBag.DateOfBirth</p>
+<p>Selected Blood Group: @ViewBag.BloodGroup</p>
+
+<h3>Schedule an Appointment</h3>
+@using (Html.BeginForm("Create", "Appointment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.PatientId)
+
+
+    <label for="txtAppointmentDate">Appointment Date and Time:</label>
+    @Html.TextBoxFor(m => m.AppointmentDateTime, new { type = "datetime-local", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.AppointmentDateTime)
+
+    <label for="txtNotes">Additional Notes:</label>
+    @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Notes)
+
+    <input type="submit" value="Schedule Appointment" />
+}

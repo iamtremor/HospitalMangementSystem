@@ -1,0 +1,19 @@
+﻿@model NewModel
+<h2>Patient Registration Form</h2>
+
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
+{
+    <label for="txtName">Full Name:</label>
+    <input type="text" id="txtName" name="FullName" required /><br>
+
+    <label for="txtDOB">Date of Birth:</label>
+    <input type="date" id="txtDOB" name="DateOfBirth" required /><br>
+
+    <label for="ddlBloodGroup">Choose Blood Group:</label><br />
+    @Html.DropDownList("BloodGroup", new SelectList(Model.AvailableBloodGroups), "-- Select Blood Group --", new { @class = "form-control" })
+
+
+    <input type="submit" value="Register" />
+}
+
+

@@ -1,0 +1,30 @@
+﻿@page
+@model Hospital.Models.AppointmentViewModel
+
+@{
+    ViewBag.Title = "Schedule New Appointment";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Appointment", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PatientId, "Patient")
+        @Html.TextBoxFor(m => m.PatientId, new { @class = "form-control" })
+        </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AppointmentDateTime, "Appointment Date and Time")
+        @Html.TextBoxFor(m => m.AppointmentDateTime, new { @class = "form-control", type = "datetime-local" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Notes, "Notes")
+        @Html.TextAreaFor(m => m.Notes, new { @class = "form-control", rows = "3" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+    }
